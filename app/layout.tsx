@@ -4,8 +4,8 @@ import { cn } from "@/lib/utils";
 import "./globals.css";
 import { Metadata } from "next";
 import { Button } from "@/components/ui/button";
-// import { ClerkProvider } from "@clerk/nextjs"
-// import { dark } from "@clerk/themes"
+import { ClerkProvider } from "@clerk/nextjs";
+import { dark } from "@clerk/themes";
 // import Provider from "./Provider"
 
 const fontSans = FontSans({
@@ -24,34 +24,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn("min-h-screen font-sans antialiased", fontSans.variable)}
-      >
-        {children}
-      </body>
-    </html>
-    // <ClerkProvider
-    //   appearance={{
-    //     baseTheme: dark,
-    //     variables: {
-    //       colorPrimary: "#3371FF" ,
-    //       fontSize: '16px'
-    //     },
-    //   }}
-    // >
-    //   <html lang="en" suppressHydrationWarning>
-    //     <body
-    //       className={cn(
-    //         "min-h-screen font-sans antialiased",
-    //         fontSans.variable
-    //       )}
-    //     >
-    //       <Provider>
-    //         {children}
-    //       </Provider>
-    //     </body>
-    //   </html>
-    // </ClerkProvider>
+    <ClerkProvider
+      appearance={{
+        baseTheme: dark,
+        variables: {
+          colorPrimary: "#3371FF",
+          fontSize: "16px",
+        },
+      }}
+    >
+      <html lang="en" suppressHydrationWarning>
+        <body
+          className={cn(
+            "min-h-screen font-sans antialiased",
+            fontSans.variable
+          )}
+        >
+          {/* <Provider> */}
+          {children}
+          {/* </Provider> */}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
