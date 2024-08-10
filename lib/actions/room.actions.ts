@@ -60,21 +60,21 @@ export const getDocument = async ({
   }
 };
 
-// export const updateDocument = async (roomId: string, title: string) => {
-//   try {
-//     const updatedRoom = await liveblocks.updateRoom(roomId, {
-//       metadata: {
-//         title,
-//       },
-//     });
+export const updateDocument = async (roomId: string, title: string) => {
+  try {
+    const updatedRoom = await liveblocks.updateRoom(roomId, {
+      metadata: {
+        title,
+      },
+    });
 
-//     revalidatePath(`/documents/${roomId}`);
+    revalidatePath(`/documents/${roomId}`);
 
-//     return parseStringify(updatedRoom);
-//   } catch (error) {
-//     console.log(`Error happened while updating a room: ${error}`);
-//   }
-// };
+    return parseStringify(updatedRoom);
+  } catch (error) {
+    console.log(`Error happened while updating a room: ${error}`);
+  }
+};
 
 // export const getDocuments = async (email: string) => {
 //   try {
